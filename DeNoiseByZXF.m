@@ -109,7 +109,7 @@ end
 function selfdemo
 load nelec.mat;
 sig = nelec;
-wname = 'sym4';
+wname = 'db5';
 level = 6;
 DeNoiseByZXF( sig,wname,level );
 end
