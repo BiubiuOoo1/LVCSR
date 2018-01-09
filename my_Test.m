@@ -1,7 +1,7 @@
 clc;clear;close all;
 % 特征提取
-handles.filename='D:\matlab\envi\newFeatures\newFeatures\birdcall\拉市海wav';%读取鸟类文件
-operOrder=[0 0 0 0 1];folder = {'MFCC';'MFCC_D';'MFCC_s';'MFCC_s_D';...
+handles.filename='D:\GitHub\LVCSR\鸟类声音1';%读取鸟类文件
+operOrder=[1 1 1 1 1];folder = {'MFCC';'MFCC_D';'MFCC_s';'MFCC_s_D';...
     'WMFCC';'MySpectrogram';'LPCC'}; 
 waveData=myrecursiveFileList(handles.filename);%提取鸟类声音
 waveNum=length(waveData);
@@ -53,7 +53,7 @@ for i=1:waveNum
 %     =======================================================================
     if operOrder(1)==1
         for z=1:frameNum
-            wave_mfcc(:,z)=frame2mfcc(frameMat(:,z),speech.fs,filterNum,mfccNum);%MFCC
+           
         end
 % ========================差分MFCC============================        
 %          wave_mfcc_D1=[wave_mfcc(:,1:end-1);diff(wave_mfcc,1,2)];
