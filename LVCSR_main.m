@@ -21,7 +21,7 @@ waveNum = length(waveData);%统计鸟声个数
 MotherFileName=[junk,'\','特征提取'];%建立特征提取母文件夹
 mkdir(MotherFileName);
 for i=1:waveNum
-    [savefilepath,~,~]=fileparts(waveData(i).path);%输入一个路径，返回文件路径名，返回文件名，返回文件后缀名
+    [savefilepath,allfileName,~]=fileparts(waveData(i).path);%输入一个路径，返回文件路径名，返回文件名，返回文件后缀名
     [~,allfile]=fileparts(savefilepath);
     SonFileName=[MotherFileName,'\',allfile];%特征提取每种鸟的子文件夹
     mkdir(SonFileName);
@@ -40,7 +40,7 @@ for i=1:waveNum
       speech_clear = speech_clear/max(abs(speech_clear));%归一化
       wave_mfcc(:,j) = ...
           frame2mfcc(speech_clear,speech.fs,mfcc.MelNum,mfcc.num);%MFCC
-      wave_lpcc(:,j) = frame2LPCCbyZXF( speech_clear,lpcc.Num,lpcc.name,0 );
+      wave_lpcc(:,j) = frame2LPCCbyZXF( speech_clear,lpcc.num,lpcc.name,0 );
       my_spectrogram = WTspectrogramByzxf(speech_clear , speech.fs, wavele.name, wavele.num, 0);
       save([SonFileName,'\','MySpectrogram','\',allfileName,'_',num2str(j)],'my_spectrogram');
       clear my_spectrogram;
